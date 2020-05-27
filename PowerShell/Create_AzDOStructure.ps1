@@ -45,7 +45,7 @@ Function Add-GitRepo
     
     $createRepo = az repos create --name $repoName | ConvertFrom-Json
 
-    Write-Host '======Remote URL: ' $createRepo.remoteUrl
+    Write-Host '======Remote URL: ' $createRepo.sshUrl
     Write-Host '======Repo ID: ' $createRepo.id
     return $createRepo
     return $createRepo
@@ -214,7 +214,7 @@ Copy-Item -Path "$FolderProjectType\*.yml" -Destination $currentDir\$RepoName'\e
 Add-ProjectTypeSolution -ProjectType $ProjectType -RepoName $RepoName
 
 #push no repositorio
-Set-GitPush -remoteUrl $createRepo.remoteUrl
+Set-GitPush -remoteUrl $createRepo.sshUrl
 
 #inclui o pipeline
 $pipelinePrincipal = $RepoName 
