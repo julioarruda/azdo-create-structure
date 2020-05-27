@@ -81,5 +81,5 @@ You can see the policies on Azure DevOps, in Branch options in repository. The p
 # Run
 To run this, you need to clone this repo, and run this script like this.
 ```
-.\Create_AzDOStructure-GFT.ps1 -Organization Organization -Project Project -RepoName Repo -ProjectType DotNetCoreMVC -BuildConfiguration release -SonarCloudAccount sonar -SonarCloudOrganization sonar -SonarProjectKey key -SonarProjectName name -ReviewersDefault [project]\reviewer -ReviewersTeam [project]\reviewer -PAT skdasjdklasjdklasjkdjaklsdjaksjdklas  
+.\Create_AzDOStructure.ps1 -Organization Organization -Project Project -RepoName Repo -ProjectType DotNetCoreMVC -BuildConfiguration release -SonarCloudAccount sonar -SonarCloudOrganization sonar -SonarProjectKey key -SonarProjectName name -ReviewersDefault [project]\reviewer -ReviewersTeam [project]\reviewer -PAT skdasjdklasjdklasjkdjaklsdjaksjdklas  
 ```
