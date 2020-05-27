@@ -101,7 +101,14 @@ Function Add-ProjectTypeSolution
         {
             dotnet new sln --name $RepoName
             dotnet new mvc --name $RepoName
-            dotnet sln add .\$RepoName\$RepoName.csproj
+            if($IsWindows)
+            {
+                dotnet sln add .\$RepoName\$RepoName.csproj
+            }
+            else
+            {
+              dotnet sln add ./$RepoName/$RepoName.csproj
+            }
 
         }
     }
@@ -185,7 +192,7 @@ az devops configure --defaults organization=$urlConcat project=$Project
 #cria repo
 $createRepo = Add-GitRepo -repoName $RepoName
 $currentDir = $PSScriptRoot
-$rootFolder = $PSScriptRoot.Replace('\PowerShell','')
+$rootFolder = $PSScriptRoot.Replace('/PowerShell','').Replace('\PowerShell','')
 $gitignore = "$($rootFolder)\.gitignore"
 
 New-Item -Path $RepoName -ItemType Directory
@@ -214,7 +221,7 @@ Copy-Item -Path "$FolderProjectType\*.yml" -Destination $currentDir\$RepoName'\e
 (Get-Content $currentDir\$RepoName'\esteiras\variables.yml') | Foreach-Object {
     $_ -replace '__BuildConfiguration__', $BuildConfiguration `
         -replace '__SonarCloudAccount__', $SonarCloudAccount `
-        -replace '__SonarCloudOrganization__', $SonarCloudOrganizatio `
+        -replace '__SonarCloudOrganization__', $SonarCloudOrganization `
         -replace '__SonarProjectKey__', $SonarProjectKey `
         -replace '__SonarProjectName__', $SonarProjectName `
     } | Set-Content $currentDir\$RepoName'\esteiras\variables.yml'
