@@ -159,7 +159,7 @@ Function Add-Pipelines
 $urlConcat = "https://dev.azure.com/$($Organization)"
 
 git config --global user.name "Automated Process"
-git config --global user.email "automated@gft.com"
+git config --global user.email "automated@outlook.com"
 Set-Location $PSScriptRoot
 Write-Host $PSScriptRoot
 
