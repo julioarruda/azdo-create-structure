@@ -1,0 +1,6 @@
+variables:
+   BuildConfiguration: __BuildConfiguration__
+   SonarCloudAccount: __SonarCloudAccount__
+   SonarCloudOrganization: __SonarCloudOrganization__
+   SonarProjectKey: __SonarProjectKey__
+   SonarProjectName: __SonarProjectName__

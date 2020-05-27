@@ -1,0 +1,32 @@
+resources:
+  repositories:
+    - repository: build
+      type: git
+      name: NovoDemo/buildtemplate
+
+    - repository: util
+      type: git
+      name: NovoDemo/UtilTemplates
+
+trigger:
+- none
+
+stages:
+- stage: Build
+  variables:
+  - template: variables.yml
+
+  jobs:
+  - job: Build
+    pool:
+      vmImage: 'windows-latest'
+
+    steps:
+
+    - template: Build.NetCore.yml@build
+      parameters:
+        BuildConfiguration: ${{ variables.BuildConfiguration }}
+        SonarCloudAccount: ${{ variables.SonarCloudAccount }}
+        SonarCloudOrganization: ${{ variables.SonarCloudOrganization }}
+        SonarProjectKey: ${{ variables.SonarProjectKey }}
+        SonarProjectName: ${{ variables.SonarProjectName }}
