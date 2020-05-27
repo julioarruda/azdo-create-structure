@@ -41,25 +41,13 @@ Function Add-GitRepo
         [string] $repoName
     )
     Write-Host '===Criando repositório no Azure Repos'
-  # if(Check-RepositoryExist $repoName)
-  # {
-   #    Write-Host "Repositório Já Existe, o processo será interrompido"
-  #     break
-  # }
- #  else {
-    
+ 
     
     $createRepo = az repos create --name $repoName | ConvertFrom-Json
 
     Write-Host '======Remote URL: ' $createRepo.sshUrl
     Write-Host '======Repo ID: ' $createRepo.id
     return $createRepo
-   #}
-
-   # $createRepo = az repos create --name $repoName | ConvertFrom-Json
-
-   # Write-Host '======Remote URL: ' $createRepo.sshUrl
-   # Write-Host '======Repo ID: ' $createRepo.id
     return $createRepo
 }
 
@@ -167,12 +155,6 @@ Function Add-Pipelines
     
     return $createPipelinePrincipal.id
 }
-
-
-#$Organization = 'https://dev.azure.com/demoserievideo1/'
-#$Project = 'NovoDemo'
-#$ReviewersDefault = '[demoserievideo1]\teste'
-#$ProjectType = 'DotNetCoreMVC'
 
 $urlConcat = "https://dev.azure.com/$($Organization)"
 
